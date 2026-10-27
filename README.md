@@ -1,27 +1,35 @@
-# Elas em Evidência — página do evento
+# Elas em Evidência — site do evento
 
-Página única (HTML puro, sem instalação) do evento **Elas em Evidência**, 5 de dezembro de 2026.
+Dois endereços no mesmo repositório (HTML puro, sem instalação):
+
+- **Página do evento** (pública): `index.html`
+- **Página de entrada** (equipe, protegida por PIN): `entrada/index.html`
 
 ## Arquivos
-- `index.html`: a página completa (textos, estilo e logo já estão dentro do arquivo)
-- `capa.jpg`: imagem que aparece quando o link é compartilhado (WhatsApp, Instagram etc.)
-- `.nojekyll`: arquivo vazio que garante que o GitHub Pages publique tudo sem alterações
+- `index.html`: a página do evento
+- `logo.jpg`: logo usada na página
+- `capa.jpg`: imagem da prévia do link (WhatsApp, Instagram)
+- `logo-email.jpg`: logo usada no e-mail de convite (o e-mail busca a imagem neste endereço)
+- `entrada/index.html` e `entrada/sw.js`: página de entrada e o arquivo que a faz abrir sem internet
 
 ## Publicar no GitHub Pages
-1. No GitHub, clique em **New repository**. Dê um nome (ex.: `elas-em-evidencia`) e deixe como **Public**.
-2. Clique em **uploading an existing file** e envie os 4 itens desta pasta: `index.html`, `capa.jpg`, `.nojekyll` e `README.md`. Confirme com **Commit changes**.
-3. Vá em **Settings > Pages**. Em **Build and deployment**, escolha **Deploy from a branch**, branch **main** e pasta **/(root)**, e clique em **Save**.
-4. Em 1 a 2 minutos o endereço aparece nessa mesma tela, no formato `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/`.
+1. No GitHub, clique em **New repository**, dê um nome (ex.: `elas-em-evidencia`) e deixe **Public**.
+2. Envie **toda a pasta**, mantendo a subpasta `entrada`. Para criar a subpasta pelo site do GitHub, use **Add file > Upload files** e arraste a pasta `entrada` inteira.
+3. Em **Settings > Pages**, escolha **Deploy from a branch**, branch **main** e pasta **/(root)**, e clique em **Save**.
+4. Em 1 a 2 minutos o endereço aparece nessa tela: `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/`.
 
 ## Ajustes depois de publicar
-Abra `index.html` no GitHub (ícone de lápis para editar) e troque:
+Para editar um arquivo no GitHub, abra-o e clique no ícone de lápis. Depois clique em **Commit changes**. A página atualiza em cerca de 1 minuto.
 
-1. **Prévia do link** (no começo do arquivo): substitua `SEU-USUARIO` e `NOME-DO-REPOSITORIO` pelos seus, nas linhas `og:image` e `og:url`.
-2. **Link de pagamento** (perto do fim do arquivo): procure `const TICKET_URL = "";` e cole o link entre as aspas. Enquanto estiver vazio, os botões mostram "Ingressos em breve".
-3. **Local do evento:** procure por "Será divulgado em breve" e troque pelo endereço quando estiver confirmado.
+**Em `index.html`:**
+1. **Prévia do link:** troque `SEU-USUARIO` e `NOME-DO-REPOSITORIO` nas linhas `og:image` e `og:url`.
+2. **Link de pagamento:** procure `const TICKET_URL = "";` e cole o link entre as aspas. Se o ingresso de grupo tiver um link próprio, cole-o em `TICKET_URL_GRUPO` (se ficar vazio, o grupo usa o link principal). Enquanto `TICKET_URL` estiver vazio, os botões mostram "Quero ser avisada" e levam ao WhatsApp do Instituto, com uma mensagem pronta.
+3. **Local do evento:** procure "Será divulgado em breve" e troque pelo endereço quando estiver confirmado.
 
-Depois de editar, clique em **Commit changes**. A página atualiza sozinha em cerca de 1 minuto.
+**Em `entrada/index.html`:**
+1. Procure `const API_URL = "COLE-AQUI-O-ENDERECO-DA-IMPLANTACAO";` e cole o endereço gerado na instalação da automação (veja o LEIA-ME da pasta `automacao`).
 
 ## Observações
-- O WhatsApp guarda a prévia do link por um tempo. Se mudar a imagem de capa, teste o link em uma conversa nova ou aguarde.
-- A página de **entrada** (conferência dos QR Codes no evento) não fica no GitHub. Veja o documento de explicação.
+- Este repositório é público. **Nunca suba planilhas, listas de nomes, convites pessoais nem o arquivo `Code.gs`.**
+- A página de entrada não mostra nenhum dado sem o PIN. O PIN fica só no script do Google Planilhas, não neste repositório.
+- O WhatsApp guarda a prévia do link por um tempo. Se trocar a imagem de capa, teste em uma conversa nova.
