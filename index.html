@@ -193,6 +193,52 @@ footer p{margin:0 0 8px}
 .bar .p b{font:600 22px/1 var(--serif)}
 .bar .btn{min-height:48px;padding:0 22px;font-size:15px;background:var(--gold-l);color:#0A1740}
 
+/* Janela de compra */
+dialog{border:0;padding:0;background:var(--paper);color:var(--ink);width:min(580px,100%);max-width:100%;max-height:min(100dvh,880px);border-radius:28px;box-shadow:0 30px 80px #0a174066;overflow:auto}
+dialog::backdrop{background:#0a1740cc}
+body:has(dialog[open]){overflow:hidden}
+.sheet{padding:22px 20px calc(30px + env(safe-area-inset-bottom,0px));display:grid;gap:20px}
+.sheet-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.sheet-top h2{margin:0;font-size:32px}
+.x{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font:400 26px/1 var(--sans);cursor:pointer}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.seg button{display:grid;gap:2px;justify-items:center;padding:12px 4px;border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--ink);font:inherit;cursor:pointer;min-height:64px}
+.seg b{font:500 13px/1.2 var(--sans);letter-spacing:.06em}
+.seg span{font:600 19px/1.1 var(--serif)}
+.seg button[aria-selected="true"]{background:var(--navy);color:#fff;border-color:var(--gold)}
+.hint{margin:0;font-size:15.5px;color:var(--muted)}
+.person{border:0;padding:0;margin:0 0 6px;display:grid;gap:12px}
+.person legend{font:500 22px/1.2 var(--serif);padding:0;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;width:100%}
+.person label{display:grid;gap:6px;font:500 13px/1.2 var(--sans);letter-spacing:.06em;color:var(--muted)}
+.person input{width:100%;min-height:52px;padding:0 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font:400 16px/1.2 var(--sans)}
+.person input:focus{border-color:var(--gold);outline:none}
+.rm{border:0;background:none;color:var(--muted);font:500 14px/1 var(--sans);cursor:pointer;text-decoration:underline;text-underline-offset:4px;min-height:44px}
+.linkbtn{border:0;background:none;color:var(--gold-t);font:500 15px/1 var(--sans);letter-spacing:.04em;cursor:pointer;min-height:44px;text-align:left;padding:0;text-decoration:underline;text-underline-offset:5px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--muted);line-height:1.5}
+.check input{width:22px;height:22px;margin-top:2px;flex:none;accent-color:var(--navy)}
+.err{min-height:22px;font-size:15px;color:#B3261E}
+@media (prefers-color-scheme:dark){.err{color:#FF9D96}}
+#step2{display:grid;gap:18px}
+.pay-box{display:grid;gap:16px;justify-items:center;text-align:center}
+.pay-box h3{font-size:30px}
+.pay-total{font:600 44px/1 var(--serif);letter-spacing:-.02em}
+.qr{width:min(260px,70vw);height:auto;border-radius:18px;border:1px solid var(--line);background:#fff;padding:10px}
+.copia{width:100%;min-height:96px;padding:12px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font:400 13px/1.4 ui-monospace,Menlo,Consolas,monospace;resize:none}
+.how{text-align:left;margin:0;padding-left:22px;color:var(--muted);font-size:15.5px;display:grid;gap:6px;width:100%}
+.done{width:100%;text-align:left;padding:16px 18px;border-radius:18px;background:var(--tint);font-size:15.5px;color:var(--muted)}
+.done b{color:var(--ink);font-weight:500}
+.codes{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:4px}
+.codes li b{font:600 18px/1 var(--serif);color:var(--ink);margin-right:6px}
+.method{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
+.method button{min-height:48px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:500 15px/1 var(--sans);cursor:pointer}
+.method button[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--gold)}
+.btn.outline{background:transparent;color:var(--ink);border-color:var(--line)}
+@media (max-width:640px){
+  dialog{width:100%;height:100%;max-height:100%;border-radius:0;margin:0;inset:0}
+  .sheet-top h2{font-size:28px}
+}
+
 /* Telas maiores */
 @media (min-width:900px){
   body{font-size:18px}
@@ -264,7 +310,7 @@ footer p{margin:0 0 8px}
   <section class="prices" aria-label="Valores">
     <a href="#ingressos">
       <span><small>Pix</small><b>R$ 229,90</b><em>individual</em></span>
-      <span><small>Cartão</small><b>R$ 249,90</b><em>até 5x</em></span>
+      <span><small>Cartão</small><b>R$ 249,90</b><em>5x sem juros</em></span>
       <span><small>Grupo 3+</small><b>R$ 197,50</b><em>por pessoa</em></span>
     </a>
   </section>
@@ -416,36 +462,34 @@ footer p{margin:0 0 8px}
           <p class="sub">Ingresso individual</p>
           <div class="price">R$ 229,90</div>
           <p class="inst">Pagamento à vista</p>
-          <a class="btn block" data-buy href="#ingressos">Garantir com Pix</a>
+          <a class="btn block" data-pay="pix" href="#ingressos">Garantir com Pix</a>
         </article>
         <article class="ticket">
           <h3>Cartão</h3>
           <p class="sub">Ingresso individual</p>
           <div class="price">R$ 249,90</div>
-          <p class="inst">Em até 5x de R$ 49,98</p>
-          <a class="btn block" data-buy href="#ingressos">Garantir no cartão</a>
+          <p class="inst">Em até 5x sem juros de R$ 49,98</p>
+          <a class="btn block" data-pay="cartao" href="#ingressos">Garantir no cartão</a>
         </article>
         <article class="ticket feat">
           <span class="badge">Venha acompanhada</span>
           <h3>Grupo de 3 ou mais</h3>
           <p class="sub">Para você e suas amigas</p>
           <div class="price">R$ 197,50<small>por pessoa</small></div>
-          <p class="inst">A partir de 3 pessoas</p>
-          <a class="btn block" data-buy="grupo" href="#ingressos">Garantir para o grupo</a>
+          <p class="inst">A partir de 3 pessoas. No cartão, em até 3x sem juros</p>
+          <a class="btn block" data-pay="grupo" href="#ingressos">Garantir para o grupo</a>
           <a class="share" id="share" href="#" target="_blank" rel="noopener">Convidar amigas pelo WhatsApp</a>
         </article>
       </div>
 
-      <p class="soon" id="soon">As vendas abrem em breve. Toque em “Quero ser avisada” para receber o aviso pelo WhatsApp.</p>
-
       <ol class="steps">
-        <li><b>Escolha</b><span>Selecione a opção de pagamento que preferir.</span></li>
-        <li><b>Pague</b><span>Conclua o pagamento na página oficial de ingressos.</span></li>
-        <li><b>Receba</b><span>Após a confirmação, o convite com seu nome e QR Code chega por e-mail.</span></li>
+        <li><b>Escolha</b><span>Selecione Pix, cartão ou grupo e preencha seus dados.</span></li>
+        <li><b>Pague</b><span>Pix por QR Code ou cartão parcelado sem juros.</span></li>
+        <li><b>Receba</b><span>Quando a organização confirmar o pagamento, o convite com seu nome e QR Code chega por e-mail.</span></li>
         <li><b>Apresente</b><span>No dia, mostre o convite e um documento com foto na entrada.</span></li>
       </ol>
 
-      <p class="safe"><b>Pagamento seguro:</b> todo pagamento é feito somente pelo link oficial desta página. Não envie Pix nem comprovantes por mensagem.</p>
+      <p class="safe"><b>Pagamento seguro:</b> pague somente pelo QR Code do Pix ou pelo link de cartão mostrados nesta página. No Pix, confira se o recebedor é INETRIS.</p>
     </div>
   </section>
 
@@ -459,9 +503,10 @@ footer p{margin:0 0 8px}
         <details><summary>Posso participar mesmo sem conhecer ninguém?</summary><p>Sim. O encontro é aberto a inscrições individuais e foi pensado para proporcionar um ambiente de troca, acolhimento e conexão entre mulheres.</p></details>
         <details><summary>O evento é apenas sobre carreira e negócios?</summary><p>Não. O encontro aborda liderança pessoal, mentalidade, espiritualidade, identidade, presença, propósito, conexões e escolhas que se relacionam com diferentes áreas da vida.</p></details>
         <details><summary>Preciso estar vivendo uma crise ou ter um grande objetivo?</summary><p>Não. Você pode participar em qualquer fase da sua vida. A experiência foi criada tanto para mulheres que desejam superar desafios quanto para aquelas que querem se fortalecer, ampliar sua visão e se preparar para novos ciclos.</p></details>
-        <details><summary>Quais são as formas de pagamento e os valores?</summary><p>O ingresso individual custa R$ 229,90 no Pix ou R$ 249,90 no cartão, que pode ser parcelado em até 5x. Para grupos de 3 ou mais pessoas, o valor é de R$ 197,50 por pessoa.</p></details>
-        <details><summary>Como faço minha inscrição?</summary><p>Escolha seu ingresso nesta página e conclua o pagamento na página oficial de ingressos. Todo pagamento é feito somente por esse link.</p></details>
-        <details><summary>Como recebo meu convite?</summary><p>Depois da confirmação do pagamento, você recebe por e-mail o convite com seu nome, seu código e o QR Code. Apresente-o, com um documento com foto, na entrada.</p></details>
+        <details><summary>Quais são as formas de pagamento e os valores?</summary><p>O ingresso individual custa R$ 229,90 no Pix ou R$ 249,90 no cartão, que pode ser parcelado em até 5x sem juros. Para grupos de 3 ou mais pessoas, o valor é de R$ 197,50 por pessoa, e no cartão o parcelamento é em até 3x sem juros.</p></details>
+        <details><summary>Como faço minha inscrição?</summary><p>Escolha Pix, cartão ou grupo nesta página, preencha seus dados e pague pelo QR Code do Pix ou pelo link de cartão que aparecem na sequência.</p></details>
+        <details><summary>Como recebo meu convite?</summary><p>Assim que a organização confirmar o seu pagamento, você recebe por e-mail o convite com seu nome, seu código e o QR Code. Apresente-o, com um documento com foto, na entrada.</p></details>
+        <details><summary>Como meus dados são usados?</summary><p>Usamos seu nome, e-mail e WhatsApp apenas para confirmar sua inscrição, enviar o convite e controlar a entrada no evento. Para pedir a exclusão dos seus dados, fale com o Instituto pelo WhatsApp ou pelo e-mail abaixo.</p></details>
         <details><summary>Onde será realizado?</summary><p>O endereço completo será divulgado em breve.</p></details>
         <details><summary>Tenho outra dúvida. Com quem falo?</summary><p>Fale com o Instituto Inetris pelo <a href="https://wa.me/558988075328?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20Elas%20em%20Evid%C3%AAncia." target="_blank" rel="noopener">WhatsApp (89) 8807-5328</a> ou pelo e-mail <a href="mailto:inetris25@gmail.com">inetris25@gmail.com</a>.</p></details>
       </div>
@@ -475,7 +520,7 @@ footer p{margin:0 0 8px}
       <p>Talvez o próximo passo não seja mudar tudo de uma vez. Talvez seja reservar um tempo para si, cuidar da sua mente, fortalecer sua conexão interior, estar em um novo ambiente, ouvir outras perspectivas e reconhecer que sua história ainda tem muitos caminhos possíveis.</p>
       <p>No dia 5 de dezembro, queremos reunir mulheres dispostas a viver uma experiência de desenvolvimento, reflexão e conexão.</p>
       <p class="statement" style="margin:28px auto 34px;max-width:22ch">Um encontro para reconhecer quem você é e decidir como deseja <em>continuar.</em></p>
-      <div class="stack"><a class="btn gold" data-buy href="#ingressos">Quero garantir meu ingresso</a></div>
+      <div class="stack"><a class="btn gold" href="#ingressos">Quero garantir meu ingresso</a></div>
     </div>
   </section>
 </main>
@@ -492,19 +537,54 @@ footer p{margin:0 0 8px}
 
 <div class="bar" id="bar" role="region" aria-label="Ingresso">
   <div class="p"><small>Ingresso no Pix</small><b>R$ 229,90</b></div>
-  <a class="btn" data-buy href="#ingressos">Garantir ingresso</a>
+  <a class="btn" data-pay="pix" href="#ingressos">Garantir ingresso</a>
 </div>
+
+<dialog id="pay" aria-labelledby="payTitle">
+  <div class="sheet">
+    <div class="sheet-top"><h2 id="payTitle">Garantir meu ingresso</h2><button class="x" type="button" id="payClose" aria-label="Fechar">×</button></div>
+    <div class="seg" role="tablist" aria-label="Tipo de ingresso">
+      <button type="button" role="tab" data-t="pix"><b>PIX</b><span>R$ 229,90</span></button>
+      <button type="button" role="tab" data-t="cartao"><b>CARTÃO</b><span>R$ 249,90</span></button>
+      <button type="button" role="tab" data-t="grupo"><b>GRUPO 3+</b><span>R$ 197,50</span></button>
+    </div>
+    <div id="step1">
+      <form id="regForm" novalidate>
+        <p class="hint" id="tipoHint"></p>
+        <div id="people"></div>
+        <button type="button" class="linkbtn" id="addP" hidden>+ Adicionar pessoa</button>
+        <input type="text" id="hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="check" style="margin-top:14px"><input type="checkbox" id="aceite"><span>Concordo em receber comunicados sobre o evento e que meus dados sejam usados apenas para a organização dele.</span></label>
+        <div class="err" id="regErr" role="alert"></div>
+        <button class="btn block" type="submit" id="regBtn">Continuar para o pagamento</button>
+      </form>
+    </div>
+    <div id="step2" hidden></div>
+  </div>
+</dialog>
 
 <script>
 /* ====== EDITE AQUI ====== */
-const TICKET_URL = "";         // link de pagamento/ingressos (começa com https://)
-const TICKET_URL_GRUPO = "";   // opcional: link do ingresso de grupo. Se vazio, usa o link acima
+const API_URL = "https://script.google.com/macros/s/AKfycbz9acW-GGlwIyaF-m3FTkQWlIi37CFIG5F4-B2Ag7th4uqdp1dCc_dQEhWzjE2HC-vG/exec";
+const LINK_CARTAO = "https://link.infinitepay.io/inetris-933/VC1DLTUtSQ-jaHIIuFv41-249,90";
+const LINK_CARTAO_GRUPO = "https://link.infinitepay.io/inetris-933/VC1DLTMtSQ-73kHbAqzm6-197,50";
+const PIX_CODIGO = {
+  pix: "00020101021126360014BR.GOV.BCB.PIX0114612415890001045204000053039865406229.905802BR5907INETRIS6015VALENCA DO PIAU62070503***63041820",
+  grupo: "00020101021126360014BR.GOV.BCB.PIX0114612415890001045204000053039865406197.505802BR5907INETRIS6015VALENCA DO PIAU62070503***630483FC"
+};
 const EVENT_START = "2026-12-05T15:00:00-03:00";
 const WHATS = "558988075328";
 /* ======================== */
 
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
+const brl = n => "R$ " + n.toFixed(2).replace(".", ",");
+const TIPOS = {
+  pix:    { valor: 229.90, minimo: 1, dica: "Preencha seus dados. Em seguida mostramos o QR Code do Pix." },
+  cartao: { valor: 249.90, minimo: 1, dica: "Preencha seus dados. Em seguida você segue para o pagamento no cartão, em até 5x sem juros." },
+  grupo:  { valor: 197.50, minimo: 3, dica: "Para 3 ou mais pessoas. No cartão, em até 3x sem juros. Preencha os dados de cada uma: cada pessoa recebe o próprio convite por e-mail." }
+};
+const MAX_GRUPO = 10;
 
 /* Contagem em dias */
 (function(){
@@ -512,26 +592,196 @@ const $$ = s => [...document.querySelectorAll(s)];
   if (dias > 0){ $("#dias").textContent = dias; $("#count").hidden = false; }
 })();
 
-/* Links de ingresso */
-(function(){
-  const ok = u => /^https:\/\//.test(u);
-  if (ok(TICKET_URL)){
-    $$("[data-buy]").forEach(a => {
-      const url = a.dataset.buy === "grupo" && ok(TICKET_URL_GRUPO) ? TICKET_URL_GRUPO : TICKET_URL;
-      a.href = url; a.target = "_blank"; a.rel = "noopener";
-    });
-  } else {
-    const msg = encodeURIComponent("Olá! Quero ser avisada quando os ingressos do Elas em Evidência estiverem à venda.");
-    $$("[data-buy]").forEach(a => {
-      a.href = "https://wa.me/" + WHATS + "?text=" + msg; a.target = "_blank"; a.rel = "noopener";
-      a.textContent = "Quero ser avisada";
-    });
-    $("#soon").style.display = "block";
-    const small = $("#bar .p small"); if (small) small.textContent = "Ingressos em breve";
+/* Convite por WhatsApp no cartão do grupo */
+$("#share").href = "https://wa.me/?text=" + encodeURIComponent("Vem comigo no Elas em Evidência, dia 5 de dezembro! " + location.href.split("#")[0]);
+
+/* ---------- Janela de compra ---------- */
+const dlg = $("#pay");
+let tipo = "pix", pessoas = [{ nome: "", email: "", whats: "" }], enviando = false;
+
+function el(tag, cls, txt){ const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+
+function openPay(t){
+  if (typeof dlg.showModal !== "function"){
+    location.href = "https://wa.me/" + WHATS + "?text=" + encodeURIComponent("Olá! Quero garantir meu ingresso do Elas em Evidência.");
+    return;
   }
-  const txt = encodeURIComponent("Vem comigo no Elas em Evidência, dia 5 de dezembro! " + location.href.split("#")[0]);
-  $("#share").href = "https://wa.me/?text=" + txt;
-})();
+  setTipo(t || "pix", true);
+  if (!dlg.open) dlg.showModal();
+}
+
+function setTipo(t, force){
+  if (!force && t === tipo) return;
+  readPeople();
+  tipo = t;
+  const min = TIPOS[t].minimo;
+  while (pessoas.length < min) pessoas.push({ nome: "", email: "", whats: "" });
+  if (min === 1) pessoas = pessoas.slice(0, 1);
+  $$("#pay .seg button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.t === t)));
+  $("#tipoHint").textContent = TIPOS[t].dica;
+  $("#regErr").textContent = "";
+  $("#step1").hidden = false; $("#step2").hidden = true; $("#step2").replaceChildren();
+  buildPeople();
+}
+
+function field(label, type, key, i, auto, ph){
+  const l = el("label", null, label.toUpperCase());
+  const inp = el("input"); inp.type = type; inp.value = pessoas[i][key] || ""; inp.dataset.i = i; inp.dataset.k = key;
+  if (auto) inp.autocomplete = auto; if (ph) inp.placeholder = ph;
+  if (type === "email") inp.inputMode = "email";
+  if (type === "tel") inp.inputMode = "tel";
+  l.appendChild(inp); return l;
+}
+function buildPeople(){
+  const box = $("#people"); box.replaceChildren();
+  pessoas.forEach((p, i) => {
+    const fs = el("fieldset", "person");
+    const lg = el("legend", null, i === 0 ? (tipo === "grupo" ? "Pessoa 1 (responsável)" : "Seus dados") : "Pessoa " + (i + 1));
+    if (tipo === "grupo" && i >= 3){
+      const rm = el("button", "rm", "Remover"); rm.type = "button";
+      rm.onclick = () => { readPeople(); pessoas.splice(i, 1); buildPeople(); };
+      lg.appendChild(rm);
+    }
+    fs.appendChild(lg);
+    fs.appendChild(field("Nome completo", "text", "nome", i, i === 0 ? "name" : "off"));
+    fs.appendChild(field("E-mail", "email", "email", i, i === 0 ? "email" : "off", "para receber o convite"));
+    if (i === 0) fs.appendChild(field("WhatsApp com DDD", "tel", "whats", i, "tel", "(89) 90000-0000"));
+    box.appendChild(fs);
+  });
+  const add = $("#addP"); add.hidden = !(tipo === "grupo" && pessoas.length < MAX_GRUPO);
+}
+function readPeople(){
+  $$("#people input").forEach(inp => { const p = pessoas[+inp.dataset.i]; if (p) p[inp.dataset.k] = inp.value; });
+}
+$("#addP").onclick = () => { readPeople(); if (pessoas.length < MAX_GRUPO){ pessoas.push({ nome: "", email: "", whats: "" }); buildPeople(); } };
+
+function validar(){
+  readPeople();
+  const emails = new Set();
+  for (let i = 0; i < pessoas.length; i++){
+    const p = pessoas[i], quem = pessoas.length > 1 ? "Pessoa " + (i + 1) + ": " : "";
+    const nome = p.nome.trim().replace(/\s+/g, " ");
+    if (nome.length < 5 || !nome.includes(" ")) return quem + "informe nome e sobrenome.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(p.email.trim())) return quem + "digite um e-mail válido, como nome@exemplo.com.";
+    const em = p.email.trim().toLowerCase();
+    if (emails.has(em)) return "Cada pessoa precisa de um e-mail diferente.";
+    emails.add(em);
+    if (i === 0 && p.whats.replace(/\D/g, "").length < 10) return quem + "digite o WhatsApp com DDD.";
+  }
+  if (!$("#aceite").checked) return "Marque a caixa de concordância para continuar.";
+  return "";
+}
+
+const MSG = {
+  dados: "Confira os dados e tente de novo.",
+  email_repetido: "Cada pessoa precisa de um e-mail diferente.",
+  limite: "Muitas inscrições ao mesmo tempo. Tente de novo em alguns minutos ou fale com o Instituto pelo WhatsApp.",
+  cheio: "As vagas do sistema de cadastro esgotaram. Fale com o Instituto pelo WhatsApp.",
+  rede: "Não foi possível conectar. Verifique a internet e tente de novo.",
+  servidor: "Algo deu errado do nosso lado. Tente de novo em instantes."
+};
+
+$("#regForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  if (enviando) return;
+  const erro = validar();
+  $("#regErr").textContent = erro;
+  if (erro) return;
+  enviando = true; const btn = $("#regBtn"); btn.disabled = true; btn.textContent = "Enviando…";
+  let j;
+  try {
+    const res = await fetch(API_URL, { method: "POST", redirect: "follow", body: JSON.stringify({
+      acao: "cadastro", tipo, aceite: true, hp: $("#hp").value,
+      pessoas: pessoas.map((p, i) => ({ nome: p.nome.trim(), email: p.email.trim(), whats: i === 0 ? p.whats.trim() : "" }))
+    }) });
+    j = await res.json();
+  } catch(_){ j = { ok: false, erro: "rede" }; }
+  enviando = false; btn.disabled = false; btn.textContent = "Continuar para o pagamento";
+  if (!j.ok){ $("#regErr").textContent = MSG[j.erro] || MSG.servidor; return; }
+  mostrarPagamento(j);
+});
+
+function copiar(texto, btn){
+  const ok = () => { btn.textContent = "Código copiado!"; setTimeout(() => { btn.textContent = "Copiar código Pix"; }, 2200); };
+  if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(texto).then(ok, () => fallback()); }
+  else fallback();
+  function fallback(){ const ta = document.createElement("textarea"); ta.value = texto; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch(_){} ta.remove(); ok(); }
+}
+
+function blocoPix(chave, valor){
+  const w = el("div", "pay-box");
+  w.appendChild(el("h3", null, "Pague com Pix"));
+  w.appendChild(el("div", "pay-total", brl(valor)));
+  const img = el("img", "qr"); img.src = "pix-" + (chave === "pix" ? "individual" : "grupo") + ".png"; img.width = 260; img.height = 260; img.alt = "QR Code do Pix de " + brl(valor);
+  w.appendChild(img);
+  const ta = el("textarea", "copia"); ta.readOnly = true; ta.value = PIX_CODIGO[chave]; ta.setAttribute("aria-label", "Código Pix copia e cola");
+  ta.addEventListener("focus", () => ta.select());
+  w.appendChild(ta);
+  const b = el("button", "btn block", "Copiar código Pix"); b.type = "button"; b.onclick = () => copiar(PIX_CODIGO[chave], b);
+  w.appendChild(b);
+  const ol = el("ol", "how");
+  ["Abra o app do seu banco e escolha Pix > Pagar.", "Leia o QR Code ou cole o código “copia e cola”.", "Confira se o recebedor é INETRIS e o valor é " + brl(valor) + ".", "Confirme o pagamento."].forEach(t => ol.appendChild(el("li", null, t)));
+  w.appendChild(ol);
+  return w;
+}
+function blocoCartao(url, valor, parcelas){
+  const w = el("div", "pay-box");
+  w.appendChild(el("h3", null, "Pague no cartão"));
+  w.appendChild(el("div", "pay-total", brl(valor)));
+  w.appendChild(el("p", "hint", "Em até " + parcelas + "x sem juros. Você será levada à página de pagamento da InfinitePay, em uma nova aba."));
+  const a = el("a", "btn block gold", "Pagar " + brl(valor) + " no cartão"); a.href = url; a.target = "_blank"; a.rel = "noopener";
+  w.appendChild(a);
+  return w;
+}
+
+function mostrarPagamento(j){
+  const s2 = $("#step2"); s2.replaceChildren();
+  const n = pessoas.length, valor = TIPOS[tipo].valor;
+  const box = el("div", "pay-box");
+  if (j.status === "ja_pago"){
+    box.appendChild(el("h3", null, "Inscrição já paga"));
+    box.appendChild(el("p", "hint", "Este e-mail já tem um pagamento confirmado" + (j.codigos && j.codigos[0] ? " (código " + j.codigos[0] + ")" : "") + ". Se precisar de ajuda, fale com o Instituto pelo WhatsApp ou e-mail no fim da página."));
+    s2.appendChild(box);
+  } else {
+    if (tipo === "grupo"){
+      const info = el("div", "done");
+      const b = el("b", null, n + " pessoas · total " + brl(n * valor));
+      info.appendChild(b);
+      info.appendChild(document.createTextNode(". Cada pessoa paga " + brl(valor) + ", cada uma por si ou uma pagando todas, repetindo o pagamento " + n + " vezes."));
+      s2.appendChild(info);
+      const m = el("div", "method");
+      const area = el("div"); area.style.width = "100%";
+      const bp = el("button", null, "Pix"), bc = el("button", null, "Cartão");
+      bp.type = bc.type = "button";
+      const set = k => { bp.setAttribute("aria-pressed", String(k === "pix")); bc.setAttribute("aria-pressed", String(k === "cartao")); area.replaceChildren(k === "pix" ? blocoPix("grupo", valor) : blocoCartao(LINK_CARTAO_GRUPO, valor, 3)); };
+      bp.onclick = () => set("pix"); bc.onclick = () => set("cartao");
+      m.append(bp, bc); s2.appendChild(m); s2.appendChild(area); set("pix");
+    } else if (tipo === "pix"){
+      s2.appendChild(blocoPix("pix", valor));
+    } else {
+      s2.appendChild(blocoCartao(LINK_CARTAO, valor, 5));
+    }
+    const done = el("div", "done");
+    done.appendChild(el("b", null, "Depois de pagar: "));
+    done.appendChild(document.createTextNode("assim que a organização confirmar o pagamento, o convite chega por e-mail."));
+    if (j.codigos && j.codigos.length){
+      const ul = el("ul", "codes");
+      j.codigos.forEach((c, i) => { const li = el("li"); li.appendChild(el("b", null, c)); li.appendChild(document.createTextNode(pessoas[i] ? pessoas[i].nome.trim() : "")); ul.appendChild(li); });
+      done.appendChild(el("div", null, j.codigos.length > 1 ? "Códigos de inscrição:" : "Seu código de inscrição:")); done.appendChild(ul);
+    }
+    s2.appendChild(done);
+  }
+  const fechar = el("button", "btn block outline", "Fechar"); fechar.type = "button"; fechar.onclick = () => dlg.close();
+  s2.appendChild(fechar);
+  $("#step1").hidden = true; s2.hidden = false;
+  dlg.scrollTo({ top: 0 });
+}
+
+$$("#pay .seg button").forEach(b => b.addEventListener("click", () => setTipo(b.dataset.t)));
+$("#payClose").onclick = () => dlg.close();
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+dlg.addEventListener("close", () => { $("#step2").replaceChildren(); });
+$$("[data-pay]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); openPay(a.dataset.pay); }));
 
 /* Barra fixa no celular: aparece depois do topo e some perto dos ingressos */
 (function(){
