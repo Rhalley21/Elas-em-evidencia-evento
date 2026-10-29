@@ -8,6 +8,7 @@ Dois endereços no mesmo repositório (HTML puro, sem instalação):
 ## Arquivos
 - `index.html`: a página do evento
 - `logo.jpg`: logo usada na página
+- `leilane.jpg`: foto da Leilane Mendes (seção de idealizadora)
 - `pix-individual.png` e `pix-grupo.png`: QR Codes do Pix (R$ 229,90 e R$ 197,50), mostrados na janela de pagamento
 - `capa.jpg`: imagem da prévia do link (WhatsApp, Instagram)
 - `logo-email.jpg`: logo usada no e-mail de convite (o e-mail busca a imagem neste endereço)

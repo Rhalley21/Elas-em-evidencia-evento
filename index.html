@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Elas em Evidência — 5 de dezembro de 2026">
-<meta property="og:description" content="Um encontro presencial para mulheres que decidiram assumir o protagonismo da própria história. Sábado, 15h às 21h.">
+<meta property="og:description" content="Um encontro presencial para mulheres que decidiram assumir o protagonismo da própria história. Sábado, das 15h às 21h.">
 <meta property="og:image" content="https://rhalley21.github.io/Elas-em-evidencia-evento/capa.jpg">
 <meta property="og:url" content="https://rhalley21.github.io/Elas-em-evidencia-evento/">
 <meta name="twitter:card" content="summary_large_image">
@@ -136,7 +136,8 @@ details[open] summary::after{transform:rotate(45deg)}
 
 /* Leilane */
 .bio{display:grid;gap:44px;align-items:start}
-.portrait{width:min(260px,70%);aspect-ratio:3/3.6;margin:0 auto;border-radius:999px 999px 28px 28px;background:var(--navy);color:var(--gold-l);display:grid;place-items:center;font:500 italic 86px/1 var(--serif);position:relative}
+.portrait{width:min(300px,80%);aspect-ratio:5/6;margin:0 auto;border-radius:999px 999px 28px 28px;background:var(--navy);position:relative}
+.portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 12%;border-radius:inherit}
 .portrait::after{content:"";position:absolute;inset:-12px;border:1px solid var(--frame);border-radius:999px 999px 38px 38px}
 .bio h3{font-size:34px;margin-bottom:4px}
 .role{color:var(--gold-t);font:500 13px/1.5 var(--sans);letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px}
@@ -257,13 +258,13 @@ body:has(dialog[open]){overflow:hidden}
   .who li:nth-last-child(2){border-bottom:1px solid var(--line)}
   .themes{grid-template-columns:1fr 1fr;gap:48px 56px}
   .bio{grid-template-columns:300px 1fr;gap:72px}
-  .portrait{margin:0}
+  .portrait{margin:0;width:100%}
   .info{grid-template-columns:repeat(4,1fr)}
   .tickets{grid-template-columns:repeat(3,1fr);gap:22px}
   .steps{grid-template-columns:repeat(4,1fr);gap:28px}
   .bar{display:none}
   footer.deep{padding-bottom:48px}
-  .final .stack{margin-inline:auto;grid-auto-flow:row}
+  .final .stack{max-width:420px;margin-inline:auto;grid-auto-flow:row;grid-auto-columns:auto}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
@@ -298,7 +299,7 @@ body:has(dialog[open]){overflow:hidden}
         <h1 class="sr-only">Elas em Evidência — 5 de dezembro de 2026</h1>
         <p class="date">5 de <em>dezembro</em></p>
         <div class="rule" aria-hidden="true"><i></i><svg class="star"><use href="#star"/></svg><i></i></div>
-        <p class="meta">Sábado · 15h às 21h<br>Encontro presencial</p>
+        <p class="meta">Sábado · das 15h às 21h<br>Encontro presencial</p>
         <p class="lead">Uma experiência para mulheres que decidiram assumir o protagonismo da própria história.</p>
         <div class="stack">
           <a class="btn" href="#ingressos">Quero viver essa experiência</a>
@@ -408,7 +409,7 @@ body:has(dialog[open]){overflow:hidden}
 
   <section id="leilane">
     <div class="wrap bio">
-      <div class="portrait" role="img" aria-label="Iniciais de Leilane Mendes">LM</div>
+      <div class="portrait"><img src="leilane.jpg" width="720" height="864" alt="Leilane Mendes, CEO do Instituto Inetris e idealizadora do Elas em Evidência" loading="lazy" decoding="async"></div>
       <div>
         <span class="eyebrow">Idealizadora</span>
         <h3>Leilane Mendes</h3>
@@ -444,7 +445,7 @@ body:has(dialog[open]){overflow:hidden}
 
       <dl class="info">
         <div><dt>Data</dt><dd>Sábado, 5 de dezembro</dd></div>
-        <div><dt>Horário</dt><dd>15h às 21h</dd></div>
+        <div><dt>Horário</dt><dd>Das 15h às 21h</dd></div>
         <div><dt>Local</dt><dd class="tbd">Será divulgado em breve</dd></div>
         <div><dt>Inclui</dt><dd class="tbd">Será divulgado em breve</dd></div>
       </dl>
@@ -523,7 +524,7 @@ body:has(dialog[open]){overflow:hidden}
   <div class="wrap">
     <div class="rule" aria-hidden="true"><i></i><svg class="star"><use href="#star"/></svg><i></i></div>
     <p class="brand">Elas em Evidência</p>
-    <p>Sábado, 5 de dezembro de 2026 · 15h às 21h</p>
+    <p>Sábado, 5 de dezembro de 2026 · das 15h às 21h</p>
     <p>Idealização: Leilane Mendes · Instituto Inetris</p>
     <p><a href="https://wa.me/558988075328?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20Elas%20em%20Evid%C3%AAncia." target="_blank" rel="noopener">WhatsApp (89) 8807-5328</a> · <a href="mailto:inetris25@gmail.com">inetris25@gmail.com</a></p>
   </div>
