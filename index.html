@@ -34,6 +34,12 @@
     --ink:#EAF0FF; --muted:#A9B5D8; --line:#26346A; --card:#121C47; --gold-t:#E6BE6E; --frame:#5B5230;
     --btn-bg:#E6BE6E; --btn-ink:#0A1740; --link:#9DB8F5; color-scheme:dark;
   }
+  /* Topo e hero sempre brancos, mesmo no modo escuro */
+  .top,.hero{
+    --hero:#FFFFFF; --ink:#14214A; --muted:#566086; --line:#E1E5F0; --card:#FFFFFF;
+    --gold-t:#8A5A1C; --frame:#E9D7AE; --btn-bg:#0F2158; --btn-ink:#FFFFFF; --link:#2D55B4;
+    color-scheme:light; color:var(--ink);
+  }
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -148,6 +154,8 @@ details[open] summary::after{transform:rotate(45deg)}
 .info dt{font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-t);margin-bottom:8px}
 .info dd{margin:0;font:500 21px/1.2 var(--serif)}
 .info dd.tbd{font:400 19px/1.4 var(--sans);color:var(--muted)}
+.info dd.teaser{font:500 italic 26px/1.15 var(--serif);color:var(--gold-t)}
+.info dd.teaser small{display:block;font:400 17px/1.4 var(--sans);font-style:normal;color:var(--muted);margin-top:6px}
 .tickets{display:grid;gap:26px}
 .ticket{position:relative;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:34px 26px 28px}
 .ticket{display:flex;flex-direction:column}
@@ -446,7 +454,7 @@ body:has(dialog[open]){overflow:hidden}
       <dl class="info">
         <div><dt>Data</dt><dd>Sábado, 5 de dezembro</dd></div>
         <div><dt>Horário</dt><dd>Das 15h às 21h</dd></div>
-        <div><dt>Local</dt><dd class="tbd">Será divulgado em breve</dd></div>
+        <div><dt>Local</dt><dd class="teaser"><svg class="star" aria-hidden="true" style="width:12px;height:12px;margin-right:8px;vertical-align:2px"><use href="#star"/></svg>A divulgar<small>Um segredo, por enquanto.</small></dd></div>
         <div><dt>Inclui</dt><dd class="tbd">Será divulgado em breve</dd></div>
       </dl>
 
@@ -502,7 +510,7 @@ body:has(dialog[open]){overflow:hidden}
         <details><summary>Como faço minha inscrição?</summary><p>Escolha Pix, cartão ou grupo nesta página, preencha seus dados e pague pelo QR Code do Pix ou pelo link de cartão que aparecem na sequência.</p></details>
         <details><summary>Como recebo meu convite?</summary><p>Assim que a organização confirmar o seu pagamento, você recebe por e-mail o convite com seu nome, seu código e o QR Code. Apresente-o, com um documento com foto, na entrada.</p></details>
         <details><summary>Como meus dados são usados?</summary><p>Usamos seu nome, e-mail e WhatsApp apenas para confirmar sua inscrição, enviar o convite e controlar a entrada no evento. Para pedir a exclusão dos seus dados, fale com o Instituto pelo WhatsApp ou pelo e-mail abaixo.</p></details>
-        <details><summary>Onde será realizado?</summary><p>O endereço completo será divulgado em breve.</p></details>
+        <details><summary>Onde será realizado?</summary><p>O local é um segredo por enquanto e será divulgado em breve.</p></details>
         <details><summary>Tenho outra dúvida. Com quem falo?</summary><p>Fale com o Instituto Inetris pelo <a href="https://wa.me/558988075328?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20Elas%20em%20Evid%C3%AAncia." target="_blank" rel="noopener">WhatsApp (89) 8807-5328</a> ou pelo e-mail <a href="mailto:inetris25@gmail.com">inetris25@gmail.com</a>.</p></details>
       </div>
     </div>
